@@ -16,4 +16,10 @@ provider "aws" {
 resource "aws_vpc" "example" {
   cidr_block = var.cidr
   name = var.vpc_name
+
+  tags = {
+    "name" = var.vpc_name 
+  }
+
+
 }
