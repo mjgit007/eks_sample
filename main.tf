@@ -9,10 +9,11 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-west-2"
+  region = var.region 
 }
 
 # Create a VPC
 resource "aws_vpc" "example" {
-  cidr_block = "20.0.0.0/16"
+  cidr_block = var.cidr
+  name = var.vpc_name
 }
