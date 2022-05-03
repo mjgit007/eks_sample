@@ -3,7 +3,6 @@ automerge: false
 delete_source_branch_on_merge: false
 parallel_plan: false
 parallel_apply: false
-allowed_overrides: [workflow]
 projects:
 - name: infradev
   dir: .
