@@ -13,7 +13,7 @@ projects:
     when_modified: ["*.tf", "dev.tfvars"]
     enabled: true
   apply_requirements: []
-  workflow: myworkflow
+  workflow: dev
 - name: infraprod
   dir: .
   workspace: prod
@@ -23,16 +23,28 @@ projects:
     when_modified: ["*.tf", "prod.tfvars"]
     enabled: true
   apply_requirements: [approved]
-  workflow: myworkflow
+  workflow: prod
 workflows:
-  myworkflow:
+  dev:
     plan:
       steps:
-      - run: echo " Please verify the terraform plan output . If output looks fine , then apply the changes and Merge the codebase"
+      - run: echo " Please verify the terraform plan output of Dev instance . If output looks fine , then apply the changes and Merge the codebase"
       - init
       - plan:
-          extra_args: ["-lock", "false"]
+          extra_args: ["-var-file", "dev.tfvars"]
     apply:
       steps:
       - run: echo "Applying the infrastructure changes"
       - apply
+  prod:
+    plan:
+      steps:
+      - run: echo " Please verify the terraform plan output of Prod instance . If output looks fine , then apply the changes and Merge the codebase"
+      - init
+      - plan:
+          extra_args: ["-var-file", "prod.tfvars"]
+    apply:
+      steps:
+      - run: echo "Applying the infrastructure changes"
+      - apply
+      
