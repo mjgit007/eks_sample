@@ -13,7 +13,7 @@ projects:
     enabled: true
   apply_requirements: []
 - name: infraprod
-  dir: .
+  dir: ./infraeks 
   # workflow: prod
   workspace: prod
   apply_requirements: [approved]
