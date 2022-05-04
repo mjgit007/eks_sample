@@ -5,7 +5,7 @@ parallel_plan: false
 parallel_apply: false
 projects:
 - name: infradev
-  dir: .
+  dir: ./infraeks
   # workflow: dev
   workspace: dev
   autoplan:
