@@ -6,12 +6,12 @@ parallel_apply: false
 projects:
 - name: infradev
   dir: .
-  workflow: dev
+  # workflow: dev
   workspace: dev
   apply_requirements: [] 
 - name: infraprod
   dir: .
-  workflow: prod
+  # workflow: prod
   workspace: prod
   apply_requirements: [approved]
   
