@@ -6,7 +6,7 @@ parallel_apply: false
 projects:
 - name: infradev
   dir: ./infraeks
-  # workflow: dev
+  workflow: dev
   workspace: dev
   #autoplan:
   # when_modified: ["*.tf", "*.tfvars"]
@@ -14,7 +14,7 @@ projects:
   apply_requirements: []
 - name: infraprod
   dir: ./infraeks 
-  # workflow: prod
+  workflow: prod
   workspace: prod
   apply_requirements: [approved]
 workflows:
