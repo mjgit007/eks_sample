@@ -19,6 +19,7 @@ resource "aws_vpc" "example" {
 
   tags = {
     "name" = var.vpc_name 
+    "env" = ${terraform.workspace}
   }
 
 
