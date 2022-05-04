@@ -17,3 +17,26 @@ projects:
   # workflow: prod
   workspace: prod
   apply_requirements: [approved]
+workflows:
+  dev:
+    plan:
+      steps:
+      - run: echo " Please verify the terraform plan output of Dev instance . If output looks fine , then apply the changes and Merge the codebase"
+      - init
+      - plan:
+          extra_args: ["-var-file", "dev.tfvars"]
+    apply:
+      steps:
+      - run: echo "Applying the infrastructure changes"
+      - apply
+  prod:
+    plan:
+      steps:
+      - run: echo " Please verify the terraform plan output of Prod instance . If output looks fine , then apply the changes and Merge the codebase"
+      - init
+      - plan:
+          extra_args: ["-var-file", "prod.tfvars"]
+    apply:
+      steps:
+      - run: echo "Applying the infrastructure changes"
+      - apply
